@@ -1,0 +1,92 @@
+---
+layout: default
+---
+
+{%- if page.title -%}
+<h1 class="title">{{ page.title }}</h1>
+{%- endif -%}
+
+{{ content }}
+
+<section class="section">
+
+  <h2 class="subtitle">My Projects</h2>
+  <small class="has-text-grey">GitHub repositories I've ever built</small>
+  <hr>
+
+  {%- assign repositories = site.github.public_repositories | where:'fork', false | sort:'stargazers_count', 'last' | reverse -%}
+  {%- for repository in repositories limit:6 -%}
+  <a href="{{ repository.html_url }}">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{ repository.name }}</strong>
+              <small>
+                <span class="icon"><i class="fas fa-star"></i></span> {{ repository.stargazers_count }}
+                <span class="icon"><i class="fas fa-code-branch"></i></span> {{ repository.forks_count }}
+              </small>
+              {%- if repository.language -%}
+              <span class="tag">{{ repository.language }}</span>
+              {%- endif -%}
+              <br/>
+              {{ repository.description }}
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </a>
+  {%- endfor -%}
+
+</section>
+
+<section class="section">
+
+  <h2 class="subtitle">My Topics</h2>
+  <small class="has-text-grey">skills and interests I have</small>
+  <hr>
+
+  <div class="content">
+    <ul>
+      <li><i class="devicon-go-plain colored"></i> Golang</li>
+      <li><i class="devicon-java-plain colored"></i> Java</li>
+      <li>Scala</li>
+      <li><i class="devicon-vim-plain colored"></i> Vim</li>
+      <li>Algorithm</li>
+      <li><i class="devicon-python-plain colored"></i> Python</li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="section">
+
+  {%- if site.posts.size > 0 -%}
+
+  <h2 class="subtitle">My Posts</h2>
+  <small class="has-text-grey">information and know-hows I want to share</small>
+  <hr>
+
+  {%- for post in site.posts -%}
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  <a href="{{ post.url }}">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{ post.title | escape }}</strong>
+              <small><span class="icon"><i class="fas fa-calendar"></i></span>{{ post.date | date: date_format }}</small>
+              {{ post.excerpt }}
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </a>
+  {%- endfor -%}
+  {%- endif -%}
+
+</section>
