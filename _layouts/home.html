@@ -10,12 +10,57 @@ layout: default
 
 <section class="section">
 
-  <h2 id="projects" class="subtitle">My Projects</h2>
-  <small class="has-text-grey">GitHub repositories I've ever built</small>
+  <h2 id="about-me" class="subtitle">About me</h2>
+  <hr>
+
+  <h3>Takatoshi Iwasa</h3>
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+          <img src="{{ site.github.owner_gravatar_url }}" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <span class="icon"><i class="fas fa-user-tie"></i></span>system engineer / software designer / programmer
+          </p>
+          <p>
+            <span class="icon"><i class="fas fa-heart"></i></span>Golang, Scala, Python, Algorithm, Novel, ...
+          </p>
+          <p>
+            <span class="icon"><i class="fas fa-location-arrow"></i></span>Tokyo, Japan
+          </p>
+        </div>
+        <p>
+          <a href="https://twitter.com/iwatakatech">
+            <span class="icon is-large"><i class="fab fa-twitter fa-lg"></i></span>
+          </a>
+          <a href="https://github.com/iwataka">
+            <span class="icon is-large"><i class="fab fa-github fa-lg"></i></span>
+          </a>
+          <a href="mailto:ap.gr.le@gmail.com">
+            <span class="icon is-large"><i class="fas fa-envelope fa-lg"></i></span>
+          </a>
+          <a href="https://qiita.com/iwataka">
+            <span class="is-size-4">Qiita</span>
+          </a>
+        </p>
+      </div>
+    </article>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2 id="projects" class="subtitle">My GitHub Projects</h2>
   <hr>
 
   {%- assign repositories = site.github.public_repositories | where:'fork', false | sort:'stargazers_count', 'last' | reverse -%}
-  {%- for repository in repositories limit:6 -%}
+  {%- for repository in repositories limit:10 -%}
+  {%- if repository.stargazers_count > 0 -%}
   <a href="{{ repository.html_url }}">
     <div class="box">
       <article class="media">
@@ -38,35 +83,14 @@ layout: default
       </article>
     </div>
   </a>
+  {%- endif -%}
   {%- endfor -%}
 
 </section>
 
 <section class="section">
 
-  <h2 id="topics" class="subtitle">My Topics</h2>
-  <small class="has-text-grey">skills and interests I have</small>
-  <hr>
-
-  <div class="content">
-    <ul>
-      <li><i class="devicon-go-plain colored"></i> Golang</li>
-      <li><i class="devicon-java-plain colored"></i> Java</li>
-      <li>Scala</li>
-      <li><i class="devicon-vim-plain colored"></i> Vim</li>
-      <li>Algorithm</li>
-      <li><i class="devicon-python-plain colored"></i> Python</li>
-    </ul>
-  </div>
-
-</section>
-
-<section class="section">
-
-  {%- if site.posts.size > 0 -%}
-
   <h2 id="posts" class="subtitle">My Posts</h2>
-  <small class="has-text-grey">information and know-hows I want to share</small>
   <hr>
 
   {%- for post in site.posts -%}
@@ -87,6 +111,5 @@ layout: default
     </div>
   </a>
   {%- endfor -%}
-  {%- endif -%}
 
 </section>
