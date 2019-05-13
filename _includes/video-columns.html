@@ -1,0 +1,21 @@
+<div class="columns">
+
+  {% assign default_ids = "" | split: ',' %}
+  {% assign ids = include.ids | default: default_ids %}
+
+  {% assign column_class = include.column_class | default: '' %}
+  {% if ids.size == 1 %}
+    {% assign column_class = "is-two-thirds" %}
+  {% endif %}
+
+  {% assign video_size = include.video_size | default: '16x9' %}
+
+  {% for id in ids %}
+  <div class="column {{ column_class }}">
+    <div class="video-container-{{ video_size }}">
+      <iframe src="https://www.youtube.com/embed/{{ id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>

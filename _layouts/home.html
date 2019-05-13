@@ -2,9 +2,9 @@
 layout: default
 ---
 
-{%- if page.title -%}
+{% if page.title %}
 <h1 class="title">{{ page.title }}</h1>
-{%- endif -%}
+{% endif %}
 
 {{ content }}
 
@@ -58,9 +58,9 @@ layout: default
   <h2 id="projects" class="subtitle">My GitHub Projects</h2>
   <hr>
 
-  {%- assign repositories = site.github.public_repositories | where:'fork', false | sort:'stargazers_count', 'last' | reverse -%}
-  {%- for repository in repositories limit:10 -%}
-  {%- if repository.stargazers_count > 0 -%}
+  {% assign repositories = site.github.public_repositories | where:'fork', false | sort:'stargazers_count', 'last' | reverse %}
+  {% for repository in repositories limit:10 %}
+  {% if repository.stargazers_count > 0 %}
   <a href="{{ repository.html_url }}">
     <div class="box">
       <article class="media">
@@ -72,9 +72,9 @@ layout: default
                 <span class="icon"><i class="fas fa-star"></i></span> {{ repository.stargazers_count }}
                 <span class="icon"><i class="fas fa-code-branch"></i></span> {{ repository.forks_count }}
               </small>
-              {%- if repository.language -%}
+              {% if repository.language %}
               <span class="tag">{{ repository.language }}</span>
-              {%- endif -%}
+              {% endif %}
               <br/>
               {{ repository.description }}
             </p>
@@ -83,8 +83,8 @@ layout: default
       </article>
     </div>
   </a>
-  {%- endif -%}
-  {%- endfor -%}
+  {% endif %}
+  {% endfor %}
 
 </section>
 
@@ -93,8 +93,8 @@ layout: default
   <h2 id="posts" class="subtitle">My Posts</h2>
   <hr>
 
-  {%- for post in site.posts -%}
-  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  {% for post in site.posts %}
+  {% assign date_format = site.minima.date_format | default: "%b %d, %Y" %}
   <a href="{{ post.url }}">
     <div class="box">
       <article class="media">
@@ -110,6 +110,6 @@ layout: default
       </article>
     </div>
   </a>
-  {%- endfor -%}
+  {% endfor %}
 
 </section>

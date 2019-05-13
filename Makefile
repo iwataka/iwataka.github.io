@@ -9,3 +9,7 @@ serve-all:
 
 clean:
 	$(JEKYLL) clean
+
+# https://github.com/stevenvachon/broken-link-checker
+lint:
+	blc http://localhost:4000 -r
