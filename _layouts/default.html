@@ -33,8 +33,13 @@
         <a class="navbar-item" href="/#projects">
           Projects
         </a>
+        {% if site.posts.size > 0 %}
         <a class="navbar-item" href="/#posts">
           Posts
+        </a>
+        {% endif %}
+        <a class="navbar-item" href="/#interests">
+          Interests
         </a>
       </div>
       <div class="navbar-end">

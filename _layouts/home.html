@@ -6,8 +6,6 @@ layout: default
 <h1 class="title">{{ page.title }}</h1>
 {% endif %}
 
-{{ content }}
-
 <section class="section">
 
   <h2 id="about-me" class="subtitle">About me</h2>
@@ -24,7 +22,7 @@ layout: default
       <div class="media-content">
         <div class="content">
           <p>
-            <span class="icon"><i class="fas fa-user-tie"></i></span>system engineer / software designer / programmer
+            <span class="icon"><i class="fas fa-user-tie"></i></span>software engineer, programmer
           </p>
           <p>
             <span class="icon"><i class="fas fa-heart"></i></span>Golang, Scala, Python, Algorithm, Novel, ...
@@ -88,6 +86,7 @@ layout: default
 
 </section>
 
+{% if site.posts.size > 0 %}
 <section class="section">
 
   <h2 id="posts" class="subtitle">My Posts</h2>
@@ -111,5 +110,17 @@ layout: default
     </div>
   </a>
   {% endfor %}
+
+</section>
+{% endif %}
+
+<section class="section">
+
+  <h2 id="interests" class="subtitle">My Interests</h2>
+
+  <div class="content">
+    <a class="twitter-timeline" href="https://twitter.com/iwatakatech" data-width="500">Tweets by iwatakatech</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
 
 </section>
