@@ -42,7 +42,8 @@
         <a class="navbar-item" href="/#projects">
           Projects
         </a>
-        {% if site.posts.size > 0 %}
+        {% assign posts = site.posts | concat: site.data.external_posts %}
+        {% if posts.size > 0 %}
         <a class="navbar-item" href="/#posts">
           Posts
         </a>

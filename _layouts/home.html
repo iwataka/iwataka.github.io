@@ -86,13 +86,14 @@ layout: default
 
 </section>
 
-{% if site.posts.size > 0 %}
+{% assign posts = site.posts | concat: site.data.external_posts %}
+{% if posts.size > 0 %}
 <section class="section">
 
   <h2 id="posts" class="subtitle">My Posts</h2>
   <hr>
 
-  {% for post in site.posts %}
+  {% for post in posts %}
   {% assign date_format = site.minima.date_format | default: "%b %d, %Y" %}
   <a href="{{ post.url }}">
     <div class="box">
@@ -102,6 +103,9 @@ layout: default
             <p>
               <strong>{{ post.title | escape }}</strong>
               <small><span class="icon"><i class="fas fa-calendar"></i></span>{{ post.date | date: date_format }}</small>
+              {% if post.type %}
+              <span class="tag">{{ post.type }}</span>
+              {% endif %}
               {{ post.excerpt }}
             </p>
           </div>
